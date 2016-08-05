@@ -1,0 +1,28 @@
+{# src/Frontend/Resources/views/Shared/frontend-footer.html.twig #}
+
+<!--================================================== -->
+
+<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script> if (!window.jQuery) { document.write('<script src="{{ asset('bundles/frontend/js/libs/jquery-2.1.1.min.js')}}"><\/script>');} </script>
+
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script> if (!window.jQuery.ui) { document.write('<script src="{{ asset('bundles/frontend/js/libs/jquery-ui-1.10.3.min.js')}}"><\/script>');} </script>-->
+
+<!-- IMPORTANT: APP CONFIG -->
+<script src="{{ asset('bundles/frontend/js/app.config.seed.js')}}"></script>
+
+<!-- JS TOUCH : include this plugin for mobile drag / drop touch events
+<script src="{{ asset('bundles/frontend/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js')}}"></script> -->
+
+<!-- BOOTSTRAP JS -->
+<script src="{{ asset('bundles/frontend/js/bootstrap/bootstrap.min.js')}}"></script>
+
+<!--[if IE 8]>
+
+  <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+<![endif]-->
+
+<!-- MAIN APP JS FILE -->
+<script src="{{ asset('bundles/frontend/js/app.seed.js')}}"></script>

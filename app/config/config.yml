@@ -37,6 +37,11 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        siteName: "proGasso"
+        siteLogo: "logo.png"
+        siteUrl: "progasso.dev"
+        siteDescription: "proGasso est une application Web développé par géoGraph à Lauzerte en Tarn et Garonne (82). Elle a pour objectif principal le référencement des associations."
 
 # Doctrine Configuration
 doctrine:
