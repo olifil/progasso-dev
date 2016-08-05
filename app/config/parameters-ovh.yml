@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: progasso-dev
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_auth_mode: login
+    mailer_host: smtp.geograph.fr
+    mailer_port: 587
+    mailer_user: contact@geograph.fr
+    mailer_password: Lolipop1972
+    secret: ThisTokenIsNotSoSecretChangeIt

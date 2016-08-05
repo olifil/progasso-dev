@@ -1,3 +1,7 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+homepage:
+    path:     /
+    defaults: { _controller: FrontendBundle:Default:index }
+    
+frontend:
+    resource: "@FrontendBundle/Resources/config/routing.yml"
+    prefix:   /
