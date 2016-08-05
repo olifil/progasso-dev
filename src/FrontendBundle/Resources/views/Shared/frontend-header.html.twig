@@ -5,7 +5,10 @@
   <div id="logo-group">
     <span id="logo"> <img src="{{ asset('bundles/frontend/img/' ~ siteLogo )}}" alt="SmartAdmin"> </span>
   </div>
-
-  <span id="extr-page-header-space"> <span class="hidden-mobile hidden-xs">Besoin d'un compte ?</span> <a href="register.html" class="btn btn-danger">Créer un compte</a> </span>
+  {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+  <span id="extr-page-header-space"> <span class="hidden-mobile hidden-xs">Identifié comme {{ app.user.username }}</span> <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger">Déconnexion</a> </span>
+  {% else %}
+  <span id="extr-page-header-space"> <a href="{{ path('fos_user_security_login') }}" class="btn btn-danger">S'identifier</a> </span>
+  {% endif %}
 
 </header>

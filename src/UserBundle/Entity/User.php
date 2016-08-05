@@ -37,9 +37,10 @@ class User extends BaseUser
      */
     private $updatedAt;
 
-    public function __contruct()
+    public function __construct()
     {
-      $this -> createdAt = new \DateTime();
+        parent::__construct();
+        $this -> createdAt = new \DateTime();
     }
 
     /**
@@ -78,7 +79,6 @@ class User extends BaseUser
      */
     public function preUpdate()
     {
-        parent::__construct();
         $this -> updatedAt = new \datetime();
     }
 }

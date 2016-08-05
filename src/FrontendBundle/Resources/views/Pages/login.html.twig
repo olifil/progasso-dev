@@ -41,38 +41,39 @@
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
 			<div class="well no-padding">
-				<form action="index.html" id="login-form" class="smart-form client-form">
+				<form action="{{ path('fos_user_security_check')}}" method="post" id="login-form" class="smart-form client-form">
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 					<header>
-						Sign In
+						S'identifier
 					</header>
 
 					<fieldset>
 
 						<section>
-							<label class="label">E-mail</label>
+							<label for="username">Nom d'utilisateur</label>
 							<label class="input"> <i class="icon-append fa fa-user"></i>
-								<input type="email" name="email">
-								<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter email address/username</b></label>
+								<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+								<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Saisissez votre nom d'utilisateur</b></label>
 						</section>
 
 						<section>
-							<label class="label">Password</label>
+							<label for="password">Mot de passe</label>
 							<label class="input"> <i class="icon-append fa fa-lock"></i>
-								<input type="password" name="password">
-								<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b> </label>
+								<input type="password" id="password" name="_password" required="required" />
+								<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Saisissez votre mot de passe</b> </label>
 							<div class="note">
-								<a href="forgotpassword.html">Forgot password?</a>
+								<a href="forgotpassword.html">Mot de pass oublié ?</a>
 							</div>
 						</section>
 
 						<section>
 							<label class="checkbox">
-								<input type="checkbox" name="remember" checked="">
-								<i></i>Stay signed in</label>
+								<input type="checkbox" name="_remember_me" checked="">
+								<i></i>Rester identifié</label>
 						</section>
 					</fieldset>
 					<footer>
-						<button type="submit" class="btn btn-primary">
+						<button type="submit" name="_submit" class="btn btn-primary">
 							Sign in
 						</button>
 					</footer>
