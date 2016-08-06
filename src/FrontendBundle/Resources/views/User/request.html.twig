@@ -1,8 +1,9 @@
-{# src/FrontendBundle/Resources/views/Pages/index.html.twig #}
+{# src/FrontendBundle/Resources/views/User/index.html.twig #}
 
 {% extends 'FrontendBundle::frontend-layout.html.twig' %}
 
 {% block content %}
+
 <!-- MAIN CONTENT -->
 <div id="content" class="container">
 
@@ -41,40 +42,27 @@
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
 			<div class="well no-padding">
-				<form action="{{ path('fos_user_security_check')}}" method="post" id="login-form" class="smart-form client-form">
-					<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+				<form action="{{ path('fos_user_resetting_send_email') }}" method="post" id="login-form" class="smart-form client-form">
 					<header>
-						S'identifier
+						Mot de passe oublié
 					</header>
 
 					<fieldset>
 
 						<section>
-							<label for="username">Nom d'utilisateur</label>
+							<label class="label">Nom d'utilisateur ou adresse email</label>
 							<label class="input"> <i class="icon-append fa fa-user"></i>
-								<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-								<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Saisissez votre nom d'utilisateur</b></label>
-						</section>
-
-						<section>
-							<label for="password">Mot de passe</label>
-							<label class="input"> <i class="icon-append fa fa-lock"></i>
-								<input type="password" id="password" name="_password" required="required" />
-								<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Saisissez votre mot de passe</b> </label>
+								<input type="text" name="username" required="required" />
+								<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Entrez votre nom d'utilisateur ou votre email</b> </label>
 							<div class="note">
-								<a href="forgotpassword.html">Mot de pass oublié ?</a>
+								<a href="login.html">Je me souviens de mon mot de passe !</a>
 							</div>
 						</section>
 
-						<section>
-							<label class="checkbox">
-								<input type="checkbox" name="_remember_me" checked="">
-								<i></i>Rester identifié</label>
-						</section>
 					</fieldset>
 					<footer>
-						<button type="submit" name="_submit" class="btn btn-primary">
-							Sign in
+						<button type="submit" class="btn btn-primary">
+							<i class="fa fa-refresh"></i> Réinitialiser
 						</button>
 					</footer>
 				</form>
@@ -83,17 +71,17 @@
 
 			<h5 class="text-center"> - Or sign in using -</h5>
 
-				<ul class="list-inline text-center">
-					<li>
-						<a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
-					</li>
-					<li>
-						<a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
-					</li>
-					<li>
-						<a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
-					</li>
-				</ul>
+			<ul class="list-inline text-center">
+				<li>
+					<a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
+				</li>
+			</ul>
 
 		</div>
 	</div>

@@ -1,147 +1,152 @@
+{# src/FrontendBundle/Resources/views/User/register.html.twig #}
 
-			<!-- MAIN CONTENT -->
-			<div id="content" class="container">
+{% extends 'FrontendBundle::frontend-layout.html.twig' %}
 
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 hidden-xs hidden-sm">
-						<h1 class="txt-color-red login-header-big">SmartAdmin</h1>
-						<div class="hero">
+{% trans_default_domain 'FOSUserBundle' %}
 
-							<div class="pull-left login-desc-box-l">
-								<h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of SmartAdmin, everywhere you go!</h4>
-								<div class="login-app-icons">
-									<a href="javascript:void(0);" class="btn btn-danger btn-sm">Frontend Template</a>
-									<a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
-								</div>
-							</div>
+{% block content %}
 
-							<img src="img/demo/iphoneview.png" alt="" class="pull-right display-image" style="width:210px">
+<!-- MAIN CONTENT -->
+<div id="content" class="container">
 
-						</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 hidden-xs hidden-sm">
+			<h1 class="txt-color-red login-header-big">Création d'un compte</h1>
+			<div class="hero">
 
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-								<h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
-								<p>
-									Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
-								</p>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-								<h5 class="about-heading">Not just your average template!</h5>
-								<p>
-									Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
-								</p>
-							</div>
-						</div>
-
+				<div class="pull-left login-desc-box-l">
+					<h4 class="paragraph-header">Créez votre compte pour bénéficier de toutes les fonctionnalitées de {{ siteName }}.</h4>
+					<h4>Profitez-en ! C'est gratuit !</h4>
+					<div class="login-app-icons">
+						<a href="javascript:void(0);" class="btn btn-danger btn-sm">Frontend Template</a>
+						<a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-						<div class="well no-padding">
+				</div>
 
-							<form action="index.html" id="smart-form-register" class="smart-form client-form">
-								<header>
-									Registration is FREE*
-								</header>
+				<img src="{{ asset('bundles/frontend/img/demo/iphoneview.png')}}" alt="" class="pull-right display-image" style="width:210px">
 
-								<fieldset>
-									<section>
-										<label class="input"> <i class="icon-append fa fa-user"></i>
-											<input type="text" name="username" placeholder="Username">
-											<b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
-									</section>
+			</div>
 
-									<section>
-										<label class="input"> <i class="icon-append fa fa-envelope"></i>
-											<input type="email" name="email" placeholder="Email address">
-											<b class="tooltip tooltip-bottom-right">Needed to verify your account</b> </label>
-									</section>
-
-									<section>
-										<label class="input"> <i class="icon-append fa fa-lock"></i>
-											<input type="password" name="password" placeholder="Password" id="password">
-											<b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
-									</section>
-
-									<section>
-										<label class="input"> <i class="icon-append fa fa-lock"></i>
-											<input type="password" name="passwordConfirm" placeholder="Confirm password">
-											<b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
-									</section>
-								</fieldset>
-
-								<fieldset>
-									<div class="row">
-										<section class="col col-6">
-											<label class="input">
-												<input type="text" name="firstname" placeholder="First name">
-											</label>
-										</section>
-										<section class="col col-6">
-											<label class="input">
-												<input type="text" name="lastname" placeholder="Last name">
-											</label>
-										</section>
-									</div>
-
-									<div class="row">
-										<section class="col col-6">
-											<label class="select">
-												<select name="gender">
-													<option value="0" selected="" disabled="">Gender</option>
-													<option value="1">Male</option>
-													<option value="2">Female</option>
-													<option value="3">Prefer not to answer</option>
-												</select> <i></i> </label>
-										</section>
-										<section class="col col-6">
-											<label class="input"> <i class="icon-append fa fa-calendar"></i>
-												<input type="text" name="request" placeholder="Request activation on" class="datepicker" data-dateformat='dd/mm/yy'>
-											</label>
-										</section>
-									</div>
-
-									<section>
-										<label class="checkbox">
-											<input type="checkbox" name="subscription" id="subscription">
-											<i></i>I want to receive news and special offers</label>
-										<label class="checkbox">
-											<input type="checkbox" name="terms" id="terms">
-											<i></i>I agree with the <a href="#" data-toggle="modal" data-target="#myModal"> Terms and Conditions </a></label>
-									</section>
-								</fieldset>
-								<footer>
-									<button type="submit" class="btn btn-primary">
-										Register
-									</button>
-								</footer>
-
-								<div class="message">
-									<i class="fa fa-check"></i>
-									<p>
-										Thank you for your registration!
-									</p>
-								</div>
-							</form>
-
-						</div>
-						<p class="note text-center">*FREE Registration ends on October 2015.</p>
-						<h5 class="text-center">- Or sign in using -</h5>
-						<ul class="list-inline text-center">
-							<li>
-								<a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
-							</li>
-							<li>
-								<a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
-							</li>
-							<li>
-								<a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
-							</li>
-						</ul>
-					</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<h5 class="about-heading">Vous représentez une association ?</h5>
+					<p>
+						Votre association ne figure pas dans notre annuaire et souhaitez vous inscrire.
+					</p>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<h5 class="about-heading">Vous êtes acteur territorial ?</h5>
+					<p>
+						Notre annuaire vous interresse et vous souhaitez y référencer les associations de votre territoire.
+					</p>
 				</div>
 			</div>
 
 		</div>
+		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+			<div class="well no-padding">
+
+				{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'smart-form client-form'}}) }}
+				{{ form_widget(form._token)}}
+					<header>
+						L'inscription est GRATUITE
+					</header>
+
+					<fieldset>
+						<section>
+							<label class="input"> <i class="icon-append fa fa-user"></i>
+								{{ form_widget(form.username, {'attr': {'placeholder': 'Nom d\'utilisateur'}})}}
+								<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Saisissez votre nom d'utilisateur</b></label>
+						</section>
+
+						<section>
+							<label class="input"> <i class="icon-append fa fa-envelope"></i>
+								{{ form_widget(form.email, {'attr': {'placeholder': 'Courriel'}})}}
+								<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Saisissez votre adresse électronique</b></label>
+						</section>
+
+						<section>
+							<label class="input"> <i class="icon-append fa fa-lock"></i>
+								{{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Mot de passe'}})}}
+								<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> N'oubliez pas votre mot de passe</b></label>
+						</section>
+
+						<section>
+							<label class="input"> <i class="icon-append fa fa-lock"></i>
+								{{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirmez votre mot de passe'}})}}
+								<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> N'oubliez pas votre mot de passe</b></label>
+						</section>
+
+					</fieldset>
+
+					<fieldset>
+						<div class="row">
+							<section class="col col-6">
+								<label class="input">
+									{{ form_errors(form.profil.prenom)}}
+									{{ form_widget(form.profil.prenom)}}
+								</label>
+							</section>
+							<section class="col col-6">
+								<label class="input">
+									{{ form_errors(form.profil.nom)}}
+									{{ form_widget(form.profil.nom)}}
+								</label>
+							</section>
+						</div>
+
+						<div class="row">
+							<section class="col col-6">
+								<label class="input"> <i class="icon-append fa fa-calendar"></i>
+									{{ form_errors(form.profil.dateNaissance)}}
+									{{ form_widget(form.profil.dateNaissance)}}
+								</label>
+							</section>
+						</div>
+
+						<section>
+							<label class="checkbox">
+								{{ form_errors(form.profil.newsletter)}}
+								{{ form_widget(form.profil.newsletter)}}
+								<i></i>Je veux recevoir la lettre d'information</label>
+							<label class="checkbox">
+								<input type="checkbox" name="terms" id="terms">
+								<i></i>Je suis d'accord avec les<a href="#" data-toggle="modal" data-target="#myModal"> Conditions Générales d'Utilisation </a></label>
+						</section>
+					</fieldset>
+					<footer>
+						<button type="submit" class="btn btn-primary">
+							{{ 'registration.submit'|trans }}
+						</button>
+					</footer>
+
+					<div class="message">
+						<i class="fa fa-check"></i>
+						<p>
+							Thank you for your registration!
+						</p>
+					</div>
+				{{ form_end(form) }}
+
+			</div>
+			<p class="note text-center"></p>
+			<h5 class="text-center">- Or sign in using -</h5>
+			<ul class="list-inline text-center">
+				<li>
+					<a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+</div>
 
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -351,3 +356,4 @@ Contractology supply a wide variety of commercial legal documents, such as <a hr
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
+{% endblock %}
