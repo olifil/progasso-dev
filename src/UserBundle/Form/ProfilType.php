@@ -34,7 +34,7 @@ class ProfilType extends AbstractType
                 'input' => 'datetime',
                 'format' => 'y-MM-dd',
                 'attr' => array(
-                    'placeholder' => 'Date de naissance',
+                    'placeholder' => 'Date de naissance (YYYY-MM-DD)',
                     'class' => 'datepicker',
                 )
             ))
