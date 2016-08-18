@@ -4,18 +4,17 @@ namespace BackendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class UserController extends Controller
 {
-    public function indexAction()
+    public function showAction()
     {
-
         $progasso = $this -> get('backend_progasso') -> getApp();
 
         $progasso['app']['page'] = array(
-            'icon' => "fa-home"
+            'icon' => "fa-user"
         );
 
-        return $this->render('BackendBundle:Default:index.html.twig', array(
+        return $this->render('BackendBundle:User:profile.html.twig', array(
             'progasso' => $progasso
         ));
     }

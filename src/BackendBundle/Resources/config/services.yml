@@ -2,3 +2,7 @@ services:
 #    backend.example:
 #        class: BackendBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+
+    backend_progasso:
+        class: BackendBundle\Services\Progasso
+        arguments: ["@security.token_storage"]

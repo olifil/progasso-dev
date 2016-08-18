@@ -13,8 +13,46 @@ will not initialize.
 
     <ul>
         <li class="">
-            <a href="{{ path('dashboard') }}" title="blank_"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Accueil</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Accueil</span></a>
+            <ul>
+                <li><a href="{{ path('dashboard') }}">Tableau de bord</a></li>
+                <li><a href="{{ path('homepage') }}">Page d'accueil du site</a></li>
+            </ul>
         </li>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+        <li>
+            <a href="#"><i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span class="menu-item-parent">Territoires</span></a>
+            <ul>
+                <li><a href="#">Régions</a></li>
+                <li><a href="#">Départements</a></li>
+                <li><a href="#">Communes</a></li>
+                <li><a href="#">Territoires</a></li>
+            </ul>
+        </li>
+        {% endif %}
+        {% if is_granted('ROLE_ASSOCIATION_MANAGER') and is_granted('ROLE_TERRITORY_MANAGER') ==  false %}
+        <li>
+            <a href="#"><i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span class="menu-item-parent">Mon Association</span></a>
+        </li>
+        {% endif %}
+        {% if is_granted('ROLE_TERRITORY_MANAGER') %}
+        <li>
+            <a href="#"><i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span class="menu-item-parent">Associations</span></a>
+            <ul>
+                <li><a href="#">Toutes les associations</a></li>
+                <li><a href="#">Nouvelle Association</a></li>
+            </ul>
+        </li>
+        {% endif %}
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+        <li>
+            <a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Utilisateurs</span></a>
+            <ul>
+                <li><a href="#">Tous les utilisateurs</a></li>
+                <li><a href="#">Créer un nouvel utilisateurs</a></li>
+            </ul>
+        </li>
+        {% endif %}
     </ul>
 </nav>
 

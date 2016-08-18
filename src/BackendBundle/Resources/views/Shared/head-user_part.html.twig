@@ -3,15 +3,17 @@
 <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
     <li class="">
         <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-            <img src="{{ asset('bundles/backend/img/avatars/sunny.png') }}" alt="John Doe" class="online" />
+            <img src="{{ asset('bundles/backend/img/avatars/sunny.png') }}" alt="{{ progasso.user.profil.prenom ~ " " ~ progasso.user.profil.nom }}" class="online" />
         </a>
         <ul class="dropdown-menu pull-right">
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
             <li>
                 <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Configuration</a>
             </li>
             <li class="divider"></li>
+            {% endif %}
             <li>
-                <a href="#ajax/profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofil</a>
+                <a href="{{ path('fos_user_profile_show') }}" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> Mon <u>P</u>rofil</a>
             </li>
             <li class="divider"></li>
             <li>

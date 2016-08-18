@@ -7,9 +7,10 @@ security:
 
     role_hierarchy:
         ROLE_USER:       ROLE_USER
-        ROLE_ENTITY_MANAGER: [ROLE_USER]
-        ROLE_ADMIN: [ROLE_ENTITY_MANAGER]
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ALLOWED_USER: [ROLE_USER]
+        ROLE_ASSOCIATION_MANAGER: [ROLE_ALLOWED_USER]
+        ROLE_TERRITORY_MANAGER: [ROLE_ASSOCIATION_MANAGER]
+        ROLE_SUPER_ADMIN: [ROLE_TERRITORY_MANAGER, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         main:
@@ -40,4 +41,4 @@ security:
                 target:     /
 
     access_control:
-        - { path: ^/admin, roles: ROLE_ENTITY_MANAGER }
+        - { path: ^/admin, roles: ROLE_ASSOCIATION_MANAGER }

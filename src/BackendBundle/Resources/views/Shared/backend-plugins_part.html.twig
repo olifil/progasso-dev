@@ -32,11 +32,12 @@
 <!-- MAIN APP JS FILE -->
 <script src="{{ asset('bundles/backend/js/app.seed.js') }}"></script>
 
-<!-- Your GOOGLE ANALYTICS CODE Below -->
+{# Le compte google analytics #}
+{% if progasso.app.googleAccount != null %}
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+  _gaq.push(['_setAccount', '{{ progasso.app.googleAccount }}']);
   _gaq.push(['_trackPageview']);
 
   (function() {
@@ -46,3 +47,4 @@
   })();
 
 </script>
+{% endif %}
