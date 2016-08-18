@@ -3,15 +3,16 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@FrontendBundle/Resources/config/services.yml" }
+    - { resource: "@UserBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -37,6 +38,11 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        siteName: "proGasso"
+        siteLogo: "logo.png"
+        siteUrl: "progasso.dev"
+        siteDescription: "proGasso est une application Web développé par géoGraph à Lauzerte en Tarn et Garonne (82). Elle a pour objectif principal le référencement des associations."
 
 # Doctrine Configuration
 doctrine:
@@ -69,3 +75,28 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# FosUserBundle Configuration
+fos_user:
+    db_driver:     orm                       # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
+    firewall_name: main                      # Le nom du firewall derrière lequel on utilisera ces utilisateurs
+    user_class:    UserBundle\Entity\User    # La classe de l'entité User que nous utilisons
+    service:
+        mailer: fos_user.mailer.twig_swift
+    from_email:
+        address:        contact@geograph.fr
+        sender_name:    proGasso
+    registration:
+        confirmation:
+            enabled: true
+            from_email:
+                address:        contact@geograph.fr
+                sender_name:    proGasso Registration
+        form:
+            type: UserBundle\Form\RegistrationType
+    resetting:
+        email:
+            from_email:
+                address:        contact@geograph.fr
+                sender_name:    proGasso Resetting
+            template: Emails/password_resetting.email.twig

@@ -1,0 +1,6 @@
+{# src/FrontendBundle/Resources/views/Pages/index.html.twig #}
+
+{% extends 'FrontendBundle::frontend-layout.html.twig' %}
+
+{# Contenu spécifique de la page #}
+{% block content %}<a href="{{ path('fos_user_security_login') }}">admin</a>{% endblock %}

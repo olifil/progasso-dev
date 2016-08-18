@@ -1,0 +1,24 @@
+{# src/Frontend/Resources/views/frontend-layout.html.twig #}
+<!DOCTYPE html>
+<html lang="fr" id="extr-page">
+
+  {# Inclusion du header #}
+  {% include 'FrontendBundle:Shared:frontend-head.html.twig' %}
+
+  <body class="animated fadeInDown">
+
+    {# Inclusion de l'entête #}
+    {% include 'FrontendBundle:Shared:frontend-header.html.twig' %}
+
+    <div id="main" role="main">
+
+      {# Contenu spécifique de la page #}
+      {% block content %}{% endblock %}
+
+    </div><!-- / main -->
+
+    {# Inclusion du footer #}
+    {% include 'FrontendBundle:Shared:frontend-footer.html.twig' %}
+
+  </body>
+</html>

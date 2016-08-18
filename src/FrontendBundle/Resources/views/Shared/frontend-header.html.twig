@@ -1,0 +1,14 @@
+{# src/Frontend/Resources/views/Shared/frontend-header.html.twig #}
+
+<header id="header">
+
+  <div id="logo-group">
+    <span id="logo"> <a href="{{ path('homepage') }}"><img src="{{ asset('bundles/frontend/img/' ~ siteLogo )}}" alt="SmartAdmin"></a> </span>
+  </div>
+  {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+  <span id="extr-page-header-space"> <span class="hidden-mobile hidden-xs">Identifié comme {{ app.user.username }}</span> <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger">Déconnexion</a> </span>
+  {% else %}
+  <span id="extr-page-header-space"> <a href="{{ path('fos_user_security_login') }}" class="btn btn-danger">S'identifier</a> </span>
+  {% endif %}
+
+</header>
