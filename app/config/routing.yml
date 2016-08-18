@@ -6,6 +6,10 @@ frontend:
     resource: "@FrontendBundle/Resources/config/routing.yml"
     prefix:   /
 
+backend:
+    resource: "@BackendBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   admin/user
