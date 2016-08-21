@@ -1,3 +1,17 @@
 fos_user_profile_show:
     path:     /show
     defaults: { _controller: BackendBundle:User:show }
+
+user_edit_field:
+    path:     /{id}/edit
+    defaults: { _controller: BackendBundle:Ajax:editUserField }
+    methods: POST
+    options:
+        expose: true
+
+user_contact_edit_field:
+    path:     /{id}/profile/edit
+    defaults: { _controller: BackendBundle:Ajax:editUserContactField }
+    methods: POST
+    options:
+        expose: true

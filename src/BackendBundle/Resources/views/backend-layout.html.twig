@@ -2,8 +2,12 @@
 
 <!DOCTYPE html>
 <html lang="fr">
+	<head>
+		{% include 'BackendBundle:Shared:backend-head_part.html.twig' %}
 
-	{% include 'BackendBundle:Shared:backend-head_part.html.twig' %}
+		{# Insertions de feuilles de styles depuis les templates enfants #}
+	    {% block stylesheets %}{% endblock %}
+	</head>
 
 	<body class="menu-on-top fixed-header fixed-navigation">
 
@@ -123,6 +127,9 @@
 
 
 		{% include 'BackendBundle:Shared:backend-plugins_part.html.twig' %}
+
+		{# Insertions de scripts depuis les templates enfants #}
+		{% block javascripts %}{% endblock %}
 
 	</body>
 

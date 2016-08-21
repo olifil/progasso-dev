@@ -14,7 +14,7 @@ class UserController extends Controller
             'icon' => "fa-user"
         );
 
-        return $this->render('BackendBundle:User:profile.html.twig', array(
+        return $this->render('BackendBundle:User:contact.html.twig', array(
             'progasso' => $progasso
         ));
     }

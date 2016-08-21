@@ -32,6 +32,10 @@
 <!-- MAIN APP JS FILE -->
 <script src="{{ asset('bundles/backend/js/app.seed.js') }}"></script>
 
+<!-- FOSJsRoutingBundle -->
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
 {# Le compte google analytics #}
 {% if progasso.app.googleAccount != null %}
 <script type="text/javascript">

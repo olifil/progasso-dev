@@ -1,0 +1,3 @@
+territory_homepage:
+    path:     /
+    defaults: { _controller: TerritoryBundle:Default:index }

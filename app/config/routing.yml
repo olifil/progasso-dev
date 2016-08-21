@@ -12,9 +12,17 @@ backend:
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   admin/user
+    prefix:   /admin/user
 
-# app/config/routing.yml
+territory:
+    resource: "@TerritoryBundle/Resources/config/routing.yml"
+    prefix:   /territory
+
+# FOSJsRoutingBundle
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+# FOSUserBundle
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

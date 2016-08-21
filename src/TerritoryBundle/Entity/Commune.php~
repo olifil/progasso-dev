@@ -1,0 +1,84 @@
+<?php
+
+namespace TerritoryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commune
+ *
+ * @ORM\Table(name="commune")
+ * @ORM\Entity(repositoryClass="TerritoryBundle\Repository\CommuneRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Commune
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codeCommune", type="string", length=5)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $codeCommune;
+
+    /**
+     * @var \Rezopouce\TerritoryBundle\Entity\Region
+     *
+     * @ORM\ManyToOne(targetEntity="TerritoryBundle\Entity\Region", inversedBy="communes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="codeRegion", referencedColumnName="codeRegion")
+     * })
+     */
+    private $region;
+
+    /**
+     * @var \Rezopouce\TerritoryBundle\Entity\Departement
+     *
+     * @ORM\ManyToOne(targetEntity="TerritoryBundle\Entity\Departement", inversedBy="communes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="codeDepartement", referencedColumnName="codeDepartement")
+     * })
+     */
+    private $departement;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="article", type="string", length=10, nullable=true)
+     */
+    private $article;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isActive", type="boolean")
+     */
+    private $isActive;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
+
+    public function __construct()
+    {
+        $this -> createdAt = new \DateTime();
+    }
+}

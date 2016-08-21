@@ -7,11 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Profil
  *
- * @ORM\Table(name="profil")
- * @ORM\Entity(repositoryClass="UserBundle\Repository\ProfilRepository")
+ * @ORM\Table(name="contact")
+ * @ORM\Entity(repositoryClass="UserBundle\Repository\ContactRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Profil
+class Contact
 {
     /**
      * @var int
@@ -53,9 +53,23 @@ class Profil
     /**
      * @var string
      *
-     * @ORM\Column(name="profession", type="string", length=50, nullable=true)
+     * @ORM\Column(name="interets", type="string", length=50, nullable=true)
      */
-    private $profession;
+    private $interets;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ville", type="integer", nullable=true)
+     */
+    private $ville;
 
     /**
      * @var string
@@ -113,6 +127,24 @@ class Profil
      */
     private $photo;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
+
+    public function __construct()
+    {
+        $this -> createdAt = new \DateTime();
+    }
 
     /**
      * Get id
@@ -412,27 +444,133 @@ class Profil
         return $this->photo;
     }
 
+
     /**
-     * Set profession
+     * Set interets
      *
-     * @param string $profession
+     * @param string $interets
      *
      * @return Profil
      */
-    public function setProfession($profession)
+    public function setInterets($interets)
     {
-        $this->profession = $profession;
+        $this->interets = $interets;
 
         return $this;
     }
 
     /**
-     * Get profession
+     * Get interets
      *
      * @return string
      */
-    public function getProfession()
+    public function getInterets()
     {
-        return $this->profession;
+        return $this->interets;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Profil
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param integer $ville
+     *
+     * @return Profil
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return integer
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Profil
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Profil
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this -> updatedAt = new \datetime();
     }
 }

@@ -1,0 +1,398 @@
+{% extends 'BackendBundle::backend-layout.html.twig' %}
+
+{% block titre %}Utilisateurs{% endblock %}
+
+{% block sousTitre %}Mon compte{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset('bundles/backend/css/bootstrap-editable.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+	<div class="col-sm-12">
+
+			<div class="well well-sm">
+
+				<div class="row">
+
+					<div class="col-sm-12 col-md-12 col-lg-6">
+						<div class="well well-light well-sm no-margin no-padding">
+
+							<div class="row">
+
+								<div class="col-sm-12">
+									<div id="myCarousel" class="carousel fade profile-carousel">
+										<div class="air air-top-left padding-10">
+											<h4 class="txt-color-white font-md">{{ progasso.user.lastlogin|date('d M Y') }}</h4>
+										</div>
+										<ol class="carousel-indicators">
+											<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+											<li data-target="#myCarousel" data-slide-to="1" class=""></li>
+											<li data-target="#myCarousel" data-slide-to="2" class=""></li>
+										</ol>
+										<div class="carousel-inner">
+											<!-- Slide 1 -->
+											<div class="item active">
+												<img src="{{ asset('bundles/backend/img/demo/s1.jpg') }}" alt="demo user">
+											</div>
+											<!-- Slide 2 -->
+											<div class="item">
+												<img src="{{ asset('bundles/backend/img/demo/s2.jpg') }}" alt="demo user">
+											</div>
+											<!-- Slide 3 -->
+											<div class="item">
+												<img src="{{ asset('bundles/backend/img/demo/m3.jpg') }}" alt="demo user">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-12">
+
+									<div class="row">
+
+										<div class="col-sm-3 profile-pic">
+											{% if progasso.user.contact.photo != null %}
+											<img src="{{ asset('uploads/users/') ~ app.user.contact.photo }}" alt="demo user">
+											{% elseif progasso.user.contact.genre == false %}
+											<img src="{{ asset('bundles/backend/img/avatars/male_120.png') }}" alt="demo user">
+											{% else %}
+											<img src="{{ asset('bundles/backend/img/avatars/female_120.png') }}" alt="demo user">
+											{% endif %}
+											<div class="padding-10">
+												<h4 class="font-md">
+													<small><a href="#" id="dateNaissance">
+														{{ progasso.user.contact.dateNaissance|date('d M Y') }}
+													</a></small>
+												</h4>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<h1>
+												<a href="#" id="prenom">
+													{{ progasso.user.contact.prenom }}
+												</a>
+												&nbsp;<span class="semi-bold">
+													<a href="#" id="nom">
+														{{ progasso.user.contact.nom }}
+													</a>
+												</span>
+												<br />
+												<small>
+												{% if progasso.user.contact.interets != null %}
+												{{ progasso.user.contact.interets }}
+												{% else %}
+												    Indiquez vos centres d'intérêts
+												{% endif %}
+												</small>
+											</h1>
+											<p class="font-md">
+												<i>Mes coordonnées</i>
+											</p>
+											<ul class="list-unstyled">
+												<li>
+													<p class="text-muted">
+														<i class="fa-fw fa fa-home"></i>&nbsp;&nbsp;
+														<a href="#" id="adresse">
+														{% if progasso.user.contact.adresse != null %}
+														<span class="txt-color-darken">{{ progasso.user.contact.adresse }}</span>
+														{% endif %}
+														</a>
+													</p>
+												</li>
+												<li>
+													<p class="text-muted">
+														<i class="fa-fw fa"></i>&nbsp;&nbsp;
+														<a href="#" id="ville">
+														{% if progasso.user.contact.ville != null %}
+														<span class="txt-color-darken">{{ progasso.user.contact.ville }}</span>
+														{% endif %}
+														</a>
+													</p>
+												</li>
+												<li>
+													<p class="text-muted">
+														<i class="fa-fw fa fa-phone"></i>&nbsp;&nbsp;
+														<a href="#" id="telephone">
+														{% if progasso.user.contact.telephone != null %}
+														<span class="txt-color-darken">{{ progasso.user.contact.telephone }}</span>
+														{% else %}
+															00 00 00 00 00
+														{% endif %}
+														</a>
+													</p>
+												</li>
+												<li>
+													<p class="text-muted">
+														<i class="fa-fw fa fa-mobile"></i>&nbsp;&nbsp;
+														<a href="#" id="mobile">
+														{% if progasso.user.contact.mobile != null %}
+														<span class="txt-color-darken">{{ progasso.user.contact.mobile }}</span>
+														{% else %}
+															00 00 00 00 00
+														{% endif %}
+														</a>
+													</p>
+												</li>
+												<li>
+													<p class="text-muted">
+														<i class="fa-fw fa fa-envelope"></i>&nbsp;&nbsp;
+														<a href="#" id="email">
+															{{ progasso.user.email }}
+														</a>
+													</p>
+												</li>
+												<li>
+													<p class="text-muted">
+														<i class="fa-fw fa fa-facebook-official"></i>&nbsp;&nbsp;
+														<a href="#" id="facebook">
+														{% if progasso.user.contact.facebook != null %}
+														<span class="txt-color-darken">{{ progasso.user.contact.facebook }}</span>
+														{% endif %}
+														</a>
+													</p>
+												</li>
+												<li>
+													<p class="text-muted">
+														<i class="fa-fw fa fa-twitter"></i>&nbsp;&nbsp;
+														<a href="#" id="twitter">
+														{% if progasso.user.contact.twitter != null %}
+														<span class="txt-color-darken">{{ progasso.user.contact.twitter }}</span>
+														{% endif %}
+														</a>
+													</p>
+												</li>
+												<li>
+													<p class="text-muted">
+														<i class="fa-fw fa fa-skype"></i>&nbsp;&nbsp;
+														<a href="#" id="skype">
+														{% if progasso.user.contact.skype != null %}
+														<span class="txt-color-darken">{{ progasso.user.contact.skype }}</span>
+														{% endif %}
+														</a>
+													</p>
+												</li>
+											</ul>
+											<br>
+											<p class="font-md">
+												<i>À propos de moi...</i>
+											</p>
+											<p>
+												<a href="#" id="bio">{% if progasso.user.contact.bio != null %}{{ progasso.user.contact.bio }}{% endif %}</a>
+											</p>
+											<br>
+
+											<p class="font-md">
+												<i>Moi et {{ progasso.app.nom }}</i>
+												<ul class="list-unstyled">
+													<li>
+														<p>
+															<label>
+														      <input type="checkbox" id="newsletter" {% if progasso.user.contact.newsletter == true %}checked{% endif %}> Recevoir la lettre d'information
+														    </label>
+														</p>
+													</li>
+												</ul>
+											</p>
+											<a href="javascript:void(0);" class="btn btn-default btn-xs"><i class="fa fa-envelope-o"></i> Envoyer un message</a>
+											<br>
+											<br>
+										</div>
+										<div class="col-sm-3">
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+					<div class="col-sm-12 col-md-12 col-lg-6">
+
+					</div>
+				</div>
+
+			</div>
+
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('bundles/backend/js/plugin/x-editable/bootstrap-editable.min.js') }}"></script>
+
+	<script type="text/javascript">
+		var emptytext = "Non renseigné";
+
+		$.fn.editable.defaults.mode = 'popup';
+
+		$(document).ready(function() {
+		// MODIFICATION DE L'UTILISATEUR
+			$('#email').editable({
+				name: 'email',
+				type: 'text',
+				pk: {{ progasso.user.id }},
+				url: Routing.generate('user_edit_field', {'id': {{ progasso.user.id }} }),
+				title: 'Courriel',
+				success: function(response, newValue) {
+					if(!response.success) return response.msg;
+				}
+			});
+
+		// MODIFICATION DU PROFIL DE L'UTILISATEUR
+			$('#dateNaissance').editable({
+				name: 'dateNaissance',
+				type: 'date',
+				format: 'yyyy-mm-dd',
+				viewformat: 'dd MM yyyy',
+				pk: {{ progasso.user.id }},
+				url: Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }),
+				title: 'Date de Naissance',
+				success: function(response, newValue) {
+					if(!response.success) return response.msg;
+				}
+			});
+
+			$('#prenom').editable({
+           		name: 'prenom',
+				type: 'text',
+			    pk: {{ progasso.user.id }},
+			    url: Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }),
+			    title: 'Prénom',
+				success: function(response, newValue) {
+				    if(!response.success) return response.msg;
+				}
+			});
+
+			$('#nom').editable({
+           		name: 'nom',
+				type: 'text',
+			    pk: {{ progasso.user.id }},
+			    url: Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }),
+			    title: 'Nom',
+				success: function(response, newValue) {
+				    if(!response.success) return response.msg;
+				}
+			});
+
+			$('#adresse').editable({
+				emptytext: emptytext,
+           		name: 'adresse',
+				type: 'text',
+			    pk: {{ progasso.user.id }},
+			    url: Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }),
+			    title: 'Adresse',
+				success: function(response, newValue) {
+				    if(!response.success) return response.msg;
+				}
+			});
+
+			$('#ville').editable({
+				value: 'ru',
+		        typeahead: {
+		            name: 'country',
+		            local: [
+		                {value: 'ru', tokens: ['Russia']},
+		                {value: 'gb', tokens: ['Great Britain']},
+		                {value: 'us', tokens: ['United States']}
+		            ],
+		            template: function(item) {
+		                return item.tokens[0] + ' (' + item.value + ')';
+		            }
+		        }
+			});
+
+		    $('#telephone').editable({
+           		name: 'telephone',
+				type: 'text',
+			    pk: {{ progasso.user.id }},
+			    url: Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }),
+			    title: 'Téléphone',
+				success: function(response, newValue) {
+				    if(!response.success) return response.msg;
+				}
+			});
+
+			$('#mobile').editable({
+           		name: 'mobile',
+				type: 'text',
+			    pk: {{ progasso.user.id }},
+			    url: Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }),
+			    title: 'Mobile',
+				success: function(response, newValue) {
+				    if(!response.success) return response.msg;
+				}
+			});
+
+			$('#facebook').editable({
+				emptytext: emptytext,
+           		name: 'facebook',
+				type: 'text',
+			    pk: {{ progasso.user.id }},
+			    url: Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }),
+			    title: 'Facebook',
+				success: function(response, newValue) {
+				    if(!response.success) return response.msg;
+				}
+			});
+
+			$('#twitter').editable({
+				emptytext: emptytext,
+           		name: 'twitter',
+				type: 'text',
+			    pk: {{ progasso.user.id }},
+			    url: Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }),
+			    title: 'Twitter',
+				success: function(response, newValue) {
+				    if(!response.success) return response.msg;
+				}
+			});
+
+			$('#skype').editable({
+				emptytext: emptytext,
+           		name: 'skype',
+				type: 'text',
+			    pk: {{ progasso.user.id }},
+			    url: Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }),
+			    title: 'Skype',
+				success: function(response, newValue) {
+				    if(!response.success) return response.msg;
+				}
+			});
+
+			$('#bio').editable({
+				emptytext: emptytext,
+           		name: 'bio',
+				type: 'textarea',
+				placeholder: "Dites quelque chose à propos de vous.",
+			    pk: {{ progasso.user.id }},
+			    url: Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }),
+			    title: 'Biographie',
+				success: function(response, newValue) {
+				    if(!response.success) return response.msg;
+				}
+			});
+
+			$('#newsletter').on('change', function(){
+				console.log($(this).is(':checked'));
+				data = {
+					name: 'newsletter',
+					value: $(this).is(':checked')
+				};
+				$.post(Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }), data)
+				 .done(function(response){
+
+				 });
+			})
+
+		});
+	</script>
+{% endblock %}

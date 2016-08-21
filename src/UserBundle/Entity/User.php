@@ -39,9 +39,9 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Profil", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Contact")
      */
-    private $profil;
+    private $contact;
 
     public function __construct()
     {
@@ -117,26 +117,26 @@ class User extends BaseUser
     }
 
     /**
-     * Set profil
+     * Set contact
      *
-     * @param \UserBundle\Entity\Profil $profil
+     * @param \UserBundle\Entity\Contact $contact
      *
      * @return User
      */
-    public function setProfil(\UserBundle\Entity\Profil $profil = null)
+    public function setContact(\UserBundle\Entity\Contact $contact = null)
     {
-        $this->profil = $profil;
+        $this->contact = $contact;
 
         return $this;
     }
 
     /**
-     * Get profil
+     * Get contact
      *
-     * @return \UserBundle\Entity\Profil
+     * @return \UserBundle\Entity\Contact
      */
-    public function getProfil()
+    public function getContact()
     {
-        return $this->profil;
+        return $this->contact;
     }
 }

@@ -26,3 +26,7 @@
 
 <!-- MAIN APP JS FILE -->
 <script src="{{ asset('bundles/frontend/js/app.seed.js')}}"></script>
+
+<!-- FOSJsRoutingBundle -->
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>

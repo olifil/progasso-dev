@@ -1,0 +1,55 @@
+<?php
+
+namespace TerritoryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Departement
+ *
+ * @ORM\Table(name="departement")
+ * @ORM\Entity(repositoryClass="TerritoryBundle\Repository\DepartementRepository")
+ */
+class Departement
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codeDepartement", type="string", length=3)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $codeDepartement;
+
+    /**
+     * @var \Rezopouce\TerritoryBundle\Entity\Region
+     *
+     * @ORM\ManyToOne(targetEntity="TerritoryBundle\Entity\Region", inversedBy="departements")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="codeRegion", referencedColumnName="codeRegion")
+     * })
+     */
+    private $region;
+
+    /**
+     * @var \Rezopouce\TerritoryBundle\Entity\Commune
+     *
+     * @ORM\OneToOne(targetEntity="TerritoryBundle\Entity\Commune")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="codeCommune", referencedColumnName="codeCommune")
+     * })
+     */
+    private $chefLieu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TerritoryBundle\Entity\Commune", mappedBy="departement")
+     */
+    private $communes;
+}

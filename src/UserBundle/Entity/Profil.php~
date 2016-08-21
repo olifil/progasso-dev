@@ -53,9 +53,23 @@ class Profil
     /**
      * @var string
      *
-     * @ORM\Column(name="profession", type="string", length=50, nullable=true)
+     * @ORM\Column(name="interets", type="string", length=50, nullable=true)
      */
-    private $profession;
+    private $interets;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ville", type="integer", nullable=true)
+     */
+    private $ville;
 
     /**
      * @var string
@@ -113,6 +127,24 @@ class Profil
      */
     private $photo;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
+
+    public function __construct()
+    {
+        $this -> createdAt = new \DateTime();
+    }
 
     /**
      * Get id
@@ -410,5 +442,39 @@ class Profil
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+
+    /**
+     * Set interets
+     *
+     * @param string $interets
+     *
+     * @return Profil
+     */
+    public function setInterets($interets)
+    {
+        $this->interets = $interets;
+
+        return $this;
+    }
+
+    /**
+     * Get interets
+     *
+     * @return string
+     */
+    public function getInterets()
+    {
+        return $this->interets;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this -> updatedAt = new \datetime();
     }
 }
