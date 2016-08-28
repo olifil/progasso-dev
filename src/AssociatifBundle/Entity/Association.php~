@@ -1,0 +1,126 @@
+<?php
+
+namespace AssociatifBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Association
+ *
+ * @ORM\Table(name="association")
+ * @ORM\Entity(repositoryClass="AssociatifBundle\Repository\AssociationRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Association
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=100)
+     */
+    private $nom;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="objet", type="text")
+     */
+    private $objet;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresseComplement", type="string", length=255, nullable=true)
+     */
+    private $adresseComplement;
+
+    /**
+     * @var \BackendBundle\Entity\Commune
+     *
+     * @ORM\ManyToOne(targetEntity="TerritoryBundle\Entity\Commune", inversedBy="associations")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="codeCommune", referencedColumnName="codeCommune")
+     * })
+     */
+    private $commune;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude", type="decimal", precision=18, scale=7, nullable=true, options={"default": 44.1033430})
+     */
+    private $latitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="decimal", precision=18, scale=7, nullable=true, options={"default": 1.0898290})
+     */
+    private $longitude;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AssociatifBundle\Entity\Bureau", inversedBy="association")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $bureau;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AssociatifBundle\Entity\Benevole", mappedBy="association")
+     */
+    private $benevoles;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="createdBy", type="integer")
+     */
+    private $createdBy;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->benevoles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this -> createdAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this -> updatedAt = new \datetime();
+    }
+}

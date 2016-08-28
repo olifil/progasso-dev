@@ -1,3 +1,7 @@
+associatif:
+    resource: "@AssociatifBundle/Resources/config/routing.yml"
+    prefix:   /
+
 homepage:
     path:     /
     defaults: { _controller: FrontendBundle:Pages:index }

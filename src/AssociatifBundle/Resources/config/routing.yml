@@ -1,0 +1,3 @@
+associatif_homepage:
+    path:     /
+    defaults: { _controller: AssociatifBundle:Default:index }

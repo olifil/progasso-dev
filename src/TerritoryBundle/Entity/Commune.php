@@ -57,6 +57,21 @@ class Commune
     private $nom;
 
     /**
+     * @ORM\OneToOne(targetEntity="TerritoryBundle\Entity\Mairie", mappedBy="commune")
+     */
+    private $mairie;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AssociatifBundle\Entity\Association", mappedBy="commune")
+     */
+    private $associations;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TerritoryBundle\Entity\TerritoryCommune", mappedBy="commune")
+     */
+    private $territoires;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="isActive", type="boolean")
@@ -77,9 +92,19 @@ class Commune
      */
     private $updatedAt;
 
+
     public function __construct()
     {
         $this -> createdAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this -> updatedAt = new \datetime();
     }
 
     /**
@@ -261,11 +286,84 @@ class Commune
     }
 
     /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
+     * Set mairie
+     *
+     * @param \TerritoryBundle\Entity\Mairie $mairie
+     *
+     * @return Commune
      */
-    public function preUpdate()
+    public function setMairie(\TerritoryBundle\Entity\Mairie $mairie = null)
     {
-        $this -> updatedAt = new \datetime();
+        $this->mairie = $mairie;
+
+        return $this;
+    }
+
+    /**
+     * Get mairie
+     *
+     * @return \TerritoryBundle\Entity\Mairie
+     */
+    public function getMairie()
+    {
+        return $this->mairie;
+    }
+
+    /**
+     * Set associations
+     *
+     * @param \AssociatifBundle\Entity\Association $associations
+     *
+     * @return Commune
+     */
+    public function setAssociations(\AssociatifBundle\Entity\Association $associations = null)
+    {
+        $this->associations = $associations;
+
+        return $this;
+    }
+
+    /**
+     * Get associations
+     *
+     * @return \AssociatifBundle\Entity\Association
+     */
+    public function getAssociations()
+    {
+        return $this->associations;
+    }
+
+    /**
+     * Add territoire
+     *
+     * @param \TerritoryBundle\Entity\TerritoryCommune $territoire
+     *
+     * @return Commune
+     */
+    public function addTerritoire(\TerritoryBundle\Entity\TerritoryCommune $territoire)
+    {
+        $this->territoires[] = $territoire;
+
+        return $this;
+    }
+
+    /**
+     * Remove territoire
+     *
+     * @param \TerritoryBundle\Entity\TerritoryCommune $territoire
+     */
+    public function removeTerritoire(\TerritoryBundle\Entity\TerritoryCommune $territoire)
+    {
+        $this->territoires->removeElement($territoire);
+    }
+
+    /**
+     * Get territoires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTerritoires()
+    {
+        return $this->territoires;
     }
 }

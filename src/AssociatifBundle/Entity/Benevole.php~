@@ -1,0 +1,63 @@
+<?php
+
+namespace AssociatifBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Benevole
+ *
+ * @ORM\Table(name="benevole")
+ * @ORM\Entity(repositoryClass="AssociatifBundle\Repository\BenevoleRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Benevole
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AssociatifBundle\Entity\Association", inversedBy="benevoles")
+     */
+    private $association;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Contact", inversedBy="benevolat")
+     */
+    private $contact;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
+
+
+    public function __construct()
+    {
+        $this -> createdAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this -> updatedAt = new \DateTime();
+    }
+}

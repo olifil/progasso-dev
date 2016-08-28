@@ -17,15 +17,11 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new Bmatzner\MarionetteBundle\BmatznerMarionetteBundle(),
-            new Bmatzner\UnderscoreBundle\BmatznerUnderscoreBundle(),
-            new Bmatzner\Json2Bundle\BmatznerJson2Bundle(),
-            new Bmatzner\JQueryBundle\BmatznerJQueryBundle(),
-            new Bmatzner\BackboneBundle\BmatznerBackboneBundle(),
             new FrontendBundle\FrontendBundle(),
             new UserBundle\UserBundle(),
             new BackendBundle\BackendBundle(),
             new TerritoryBundle\TerritoryBundle(),
+            new AssociatifBundle\AssociatifBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

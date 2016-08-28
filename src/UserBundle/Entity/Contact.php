@@ -128,6 +128,11 @@ class Contact
     private $photo;
 
     /**
+     * @ORM\OneToMany(targetEntity="AssociatifBundle\Entity\Benevole", mappedBy="contact")
+     */
+    private $benevolat;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="createdAt", type="datetime")
@@ -145,6 +150,15 @@ class Contact
     public function __construct()
     {
         $this -> createdAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this -> updatedAt = new \datetime();
     }
 
     /**
@@ -564,14 +578,5 @@ class Contact
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function preUpdate()
-    {
-        $this -> updatedAt = new \datetime();
     }
 }

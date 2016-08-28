@@ -1,0 +1,60 @@
+<?php
+
+namespace AssociatifBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Bureau
+ *
+ * @ORM\Table(name="bureau")
+ * @ORM\Entity(repositoryClass="AssociatifBundle\Repository\BureauRepository")
+ */
+class Bureau
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AssociatifBundle\Entity\Association", mappedBy="bureau")
+     */
+     private $association;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $president;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     */
+    private $presidentAdjoint;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $tresorier;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     */
+    private $tresorierAdjoint;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     */
+    private $secretaire;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     */
+    private $secretaireAdjoint;
+}

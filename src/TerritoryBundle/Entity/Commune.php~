@@ -57,6 +57,21 @@ class Commune
     private $nom;
 
     /**
+     * @ORM\OneToOne(targetEntity="TerritoryBundle\Entity\Mairie", mappedBy="commune")
+     */
+    private $mairie;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AssociatifBundle\Entity\Association", mappedBy="commune")
+     */
+    private $associations;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TerritoryBundle\Entity\TerritoryCommune", mappedBy="commune")
+     */
+    private $territoires;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="isActive", type="boolean")
@@ -77,8 +92,18 @@ class Commune
      */
     private $updatedAt;
 
+
     public function __construct()
     {
         $this -> createdAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this -> updatedAt = new \datetime();
     }
 }
