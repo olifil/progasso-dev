@@ -297,6 +297,7 @@
 
 			$('#ville').editable({
 				value: 'ru',
+				url: Routing.generate('user_contact_edit_field', {'id': {{ progasso.user.id }} }),
 		        typeahead: {
 		            name: 'country',
 		            local: [

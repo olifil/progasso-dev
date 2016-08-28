@@ -3,9 +3,12 @@
 <!-- PACE LOADER -->
 <script data-pace-options='{ "restartOnRequestAfter": true }' src="{{ asset('bundles/backend/js/plugin/pace/pace.min.js') }}"></script>
 
+<script type="text/javascript" src="{{ asset('bundles/bmatznerjson2/js/json2.min.js') }}"></script>
+
 <!-- #PLUGINS -->
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('bundles/bmatznerjquery/js/jquery.min.js') }}"></script>
+
 <script>
     if (!window.jQuery) {
         document.write('<script src="{{ asset('bundles/backend/js/libs/jquery-2.1.1.min.js') }}"><\/script>');
@@ -31,6 +34,11 @@
 
 <!-- MAIN APP JS FILE -->
 <script src="{{ asset('bundles/backend/js/app.seed.js') }}"></script>
+
+
+<script type="text/javascript" src="{{ asset('bundles/bmatznerunderscore/js/underscore.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/bmatznerbackbone/js/backbone.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/bmatznermarionette/js/backbone.marionette.min.js') }}"></script>
 
 <!-- FOSJsRoutingBundle -->
 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>

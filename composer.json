@@ -30,6 +30,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "friendsofsymfony/user-bundle": "dev-master",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
+        "bmatzner/marionette-bundle": "~1.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

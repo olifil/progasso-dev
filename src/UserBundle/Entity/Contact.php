@@ -141,6 +141,7 @@ class Contact
      */
     private $updatedAt;
 
+
     public function __construct()
     {
         $this -> createdAt = new \DateTime();
